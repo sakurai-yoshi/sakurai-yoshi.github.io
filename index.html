@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Yoshiaki Sakurai — Developer</title>
-  <meta name="description" content="Yoshiaki Sakurai (sakurai-yoshi) のデベロッパーページ。プロジェクト、ブログ、連絡先、プライバシーポリシーへのリンクを掲載しています。" />
+  <meta name="description" content="Yoshiaki Sakurai (sakurai-yoshi) のデベロッパーページ。プロジェクト、自己紹介、連絡先、プライバシーポリシーへのリンクを掲載しています。" />
   <style>
     :root {
       --bg: #fff;
@@ -22,20 +22,24 @@
     .hero { padding:2rem 0; border-bottom:1px solid #eee; }
     .hero h1 { margin:0 0 .5rem 0; font-size:1.75rem; }
     .hero p { margin:0; color:var(--muted); }
-    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; margin:1.5rem 0; }
-    .card { border:1px solid #eee; padding:1rem; border-radius:8px; background:#fafafa; }
-    .card h3 { margin:0 0 .5rem 0; font-size:1.05rem; }
-    .card p { margin:0; color:var(--muted); font-size:.95rem; }
-    .actions { margin-top:1rem; display:flex; gap:.5rem; flex-wrap:wrap; }
-    .btn { display:inline-block; padding:.5rem .75rem; border-radius:6px; text-decoration:none; font-weight:600; font-size:.9rem; }
+    .about { margin:2rem 0; }
+    .about h2 { margin-bottom:.5rem; }
+    .skills { display:flex; gap:.5rem; flex-wrap:wrap; margin-top:.5rem; }
+    .skill-badge { background:var(--accent); color:#fff; padding:.25rem .6rem; border-radius:12px; font-size:.85rem; font-weight:600; }
+    .projects ul { list-style:none; padding:0; margin:0; }
+    .projects li { padding:.75rem 0; border-bottom:1px solid #eee; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; }
+    .projects h3 { margin:0; font-size:1rem; }
+    .projects p { margin:.25rem 0 0 0; color:var(--muted); font-size:.9rem; }
+    .actions { display:flex; gap:.5rem; }
+    .btn { display:inline-block; padding:.35rem .6rem; border-radius:6px; text-decoration:none; font-weight:600; font-size:.85rem; }
     .btn-outline { border:1px solid #ddd; color:var(--fg); background:transparent; }
     .btn-primary { background:var(--accent); color:#fff; border:1px solid var(--accent); }
     footer { margin-top:3rem; padding-top:1rem; border-top:1px solid #eee; color:var(--muted); font-size:.9rem; display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; }
     a.small { color:inherit; text-decoration:underline; }
     @media (prefers-color-scheme: dark) {
       :root { --bg:#0b0b0c; --fg:#e6e6e6; --muted:#a6a6a6; --accent:#66a8ff; }
-      .card { background:#070708; border-color:#151516; }
       header, footer { border-color:#151516; }
+      .skill-badge { background:#333; }
     }
   </style>
 </head>
@@ -44,12 +48,10 @@
     <header>
       <div class="brand">
         <span>Yoshiaki Sakurai</span>
-        <small style="color:var(--muted); font-weight:400;">(sakurai-yoshi)</small>
       </div>
       <nav>
         <a href="index.html" class="primary">Home</a>
-        <a href="https://github.com/sakurai-yoshi" target="_blank" rel="noopener">GitHub</a>
-        <a href="privacy.html" title="プライバシーポリシー">Privacy Policy</a>
+        <a href="privacy.html" target="_blank" rel="noopener" title="プライバシーポリシー">Privacy Policy</a>
         <a href="mailto:vice0804@gmail.com">Contact</a>
       </nav>
     </header>
@@ -57,42 +59,49 @@
     <main>
       <section class="hero" aria-labelledby="hero-title">
         <h1 id="hero-title">デベロッパー / ソフトウェアエンジニア</h1>
-        <p>モバイルアプリやツールの開発を行っています。ここでは主なプロジェクト、ブログ、連絡先情報を掲載しています。</p>
-        <div style="margin-top:1rem;" class="actions">
-          <a class="btn btn-primary" href="https://github.com/sakurai-yoshi" target="_blank" rel="noopener">GitHub を見る</a>
-          <a class="btn btn-outline" href="privacy.html">プライバシーポリシー</a>
+        <p>モバイルアプリやツールの開発を行っています。ここでは主なプロジェクト、自己紹介、連絡先情報を掲載しています。</p>
+      </section>
+
+      <!-- 自己紹介 -->
+      <section class="about" aria-labelledby="about">
+        <h2 id="about">自己紹介</h2>
+        <p><strong>生年月日:</strong> 1986年8月4日</p>
+        <p>ユーザー体験を重視し、シンプルで持続可能なソフトウェアを目指しています。</p>
+        <div class="skills">
+          <span class="skill-badge">Flutter</span>
+          <span class="skill-badge">VB.NET</span>
+          <span class="skill-badge">PL/SQL</span>
         </div>
       </section>
 
-      <section aria-labelledby="projects" style="margin-top:1.5rem;">
-        <h2 id="projects" style="margin:.75rem 0 0.5rem 0;">Projects</h2>
-        <div class="grid">
-          <article class="card">
-            <h3>バーコード / QR スキャンアプリ</h3>
-            <p>ユーザーのローカルにスキャン履歴を保存できる軽量のスキャンアプリ。広告・サブスクリプション対応。</p>
-            <div style="margin-top:.75rem;">
-              <a class="btn btn-outline" href="https://play.google.com/store/apps" target="_blank" rel="noopener">ストア</a>
+      <!-- プロジェクト -->
+      <section class="projects" aria-labelledby="projects">
+        <h2 id="projects">Projects</h2>
+        <ul>
+          <li>
+            <div>
+              <h3>バーコード / QR スキャンアプリ</h3>
+              <p>ローカル保存対応の軽量スキャンアプリ。広告・サブスクリプション対応。</p>
             </div>
-          </article>
-
-          <article class="card">
-            <h3>ツール & ライブラリ</h3>
-            <p>小さなユーティリティやスニペットを公開しています。GitHub にてソースコードを管理中。</p>
-            <div style="margin-top:.75rem;">
-              <a class="btn btn-outline" href="https://github.com/sakurai-yoshi" target="_blank" rel="noopener">GitHub</a>
+            <div class="actions">
+              <a class="btn btn-outline" href="https://apps.apple.com/" target="_blank" rel="noopener">App Store</a>
+              <a class="btn btn-outline" href="https://play.google.com/store/apps" target="_blank" rel="noopener">Google Play</a>
             </div>
-          </article>
-
-          <article class="card">
-            <h3>ブログ・更新情報</h3>
-            <p>開発メモやリリース情報、技術的なメモを随時公開予定です。</p>
-            <div style="margin-top:.75rem;">
-              <a class="btn btn-outline" href="#" onclick="alert('準備中'); return false;">近日公開</a>
+          </li>
+          <!--<li>
+            <div>
+              <h3>新しいアプリ名</h3>
+              <p>アプリの説明をここに記載します。</p>
             </div>
-          </article>
-        </div>
+            <div class="actions">
+              <a class="btn btn-outline" href="https://apps.apple.com/" target="_blank" rel="noopener">App Store</a>
+              <a class="btn btn-outline" href="https://play.google.com/store/apps" target="_blank" rel="noopener">Google Play</a>
+            </div>
+          </li>-->
+        </ul>
       </section>
 
+      <!-- 連絡先 -->
       <section aria-labelledby="contact" style="margin-top:1.5rem;">
         <h2 id="contact">Contact</h2>
         <p>ご質問やご依頼はメールで受け付けています： <a class="small" href="mailto:vice0804@gmail.com">vice0804@gmail.com</a></p>
@@ -102,9 +111,7 @@
     <footer>
       <div>© <strong>Yoshiaki Sakurai</strong></div>
       <div>
-        <a href="privacy.html">プライバシーポリシー</a>
-        <span style="margin:0 .5rem;">·</span>
-        <a href="https://github.com/sakurai-yoshi" target="_blank" rel="noopener">GitHub</a>
+        <a href="privacy.html" target="_blank" rel="noopener">プライバシーポリシー</a>
       </div>
     </footer>
   </div>
