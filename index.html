@@ -7,73 +7,141 @@
   <meta name="description" content="Yoshiaki Sakurai (sakurai-yoshi) のデベロッパーページ。プロジェクト、自己紹介、連絡先、プライバシーポリシーへのリンクを掲載しています。" />
   <style>
     :root {
-      --bg: #fff;
-      --fg: #111;
-      --muted: #666;
+      /* カラーパレット */
+      --bg: #f9fafb;
+      --fg: #1f2937;
+      --muted: #6b7280;
       --accent: #0b66ff;
-      --max-w: 960px;
+      --accent-hover: #0056e0;
+      --card-bg: #ffffff;
+      --border: #e5e7eb;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+      --max-w: 800px;
     }
-    html,body { height:100%; margin:0; font-family: -apple-system,BlinkMacSystemFont,"Helvetica Neue",Segoe UI,Roboto,"Hiragino Kaku Gothic ProN","游ゴシック",sans-serif; color:var(--fg); background:var(--bg); }
-    .wrap { max-width:var(--max-w); margin:2rem auto; padding:0 1rem; }
-    header { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:2rem; }
-    .brand { font-weight:700; font-size:1.125rem; display:flex; align-items:center; gap:.5rem; }
-    nav a { color:var(--muted); text-decoration:none; margin-left:1rem; font-size:.95rem; }
-    nav a.primary { color:var(--accent); font-weight:600; }
-    .hero { padding:2rem 0; border-bottom:1px solid #eee; }
-    .hero h1 { margin:0 0 .5rem 0; font-size:1.75rem; }
-    .hero p { margin:0; color:var(--muted); }
-    .about { margin:2rem 0; }
-    .about h2 { margin-bottom:.5rem; }
-    .skills { display:flex; gap:.5rem; flex-wrap:wrap; margin-top:.5rem; }
-    .skill-badge { background:var(--accent); color:#fff; padding:.25rem .6rem; border-radius:12px; font-size:.85rem; font-weight:600; }
-    .projects ul { list-style:none; padding:0; margin:0; }
-    .projects li { padding:.75rem 0; border-bottom:1px solid #eee; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; }
-    .projects h3 { margin:0; font-size:1rem; }
-    .projects p { margin:.25rem 0 0 0; color:var(--muted); font-size:.9rem; }
-    .actions { display:flex; gap:.5rem; }
-    .btn { display:inline-block; padding:.35rem .6rem; border-radius:6px; text-decoration:none; font-weight:600; font-size:.85rem; }
-    .btn-outline { border:1px solid #ddd; color:var(--fg); background:transparent; }
-    .btn-primary { background:var(--accent); color:#fff; border:1px solid var(--accent); }
-    footer { margin-top:3rem; padding-top:1rem; border-top:1px solid #eee; color:var(--muted); font-size:.9rem; display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; }
-    a.small { color:inherit; text-decoration:underline; }
+
+    /* 基本設定 */
+    html, body { height: 100%; margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "游ゴシック", sans-serif; color: var(--fg); background: var(--bg); line-height: 1.6; }
+    
+    /* レイアウトコンテナ */
+    .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 1.5rem; display: flex; flex-direction: column; min-height: 100vh; }
+    
+    /* ヘッダー */
+    header { padding: 2rem 0; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .brand { 
+      font-weight: 800; 
+      font-size: 1.5rem; /* 名前を目立たせる */
+      color: var(--fg);
+      letter-spacing: -0.03em;
+      text-decoration: none;
+    }
+    nav { display: flex; gap: 1.5rem; }
+    nav a { color: var(--muted); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: color 0.2s; }
+    nav a:hover, nav a.primary { color: var(--accent); }
+
+    /* メインコンテンツ */
+    main { flex: 1; }
+
+    /* ヒーローセクション */
+    .hero { padding: 3rem 0; }
+    .hero h1 { margin: 0 0 1rem 0; font-size: 2rem; letter-spacing: -0.02em; line-height: 1.3; }
+    .hero-text { color: var(--muted); font-size: 1.05rem; margin-bottom: 1.5rem; }
+
+    /* セクション共通 */
+    section { margin-bottom: 4rem; }
+    h2 { font-size: 1.25rem; margin-bottom: 1rem; border-left: 4px solid var(--accent); padding-left: 0.75rem; line-height: 1.2; }
+
+    /* スキルバッジ */
+    .skills { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem; }
+    .skill-badge { background: var(--fg); color: var(--bg); padding: 0.25rem 0.75rem; border-radius: 99px; font-size: 0.8rem; font-weight: 600; }
+    
+    /* プロジェクト（カードデザイン） */
+    .project-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 1.5rem; grid-template-columns: 1fr; }
+    /* プロジェクトが1つのときは幅いっぱいに表示されます。
+       今後増えた場合は自動で2列になります。
+    */
+    @media (min-width: 600px) {
+      .project-list { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    .project-card h3 { margin: 0 0 0.5rem 0; font-size: 1.25rem; font-weight: 700; }
+    .project-card p { margin: 0 0 1rem 0; color: var(--muted); font-size: 0.95rem; flex-grow: 1; }
+    
+    .actions { display: flex; gap: 0.75rem; margin-top: auto; }
+    .btn { 
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 0.5rem 1rem; border-radius: 8px; text-decoration: none; 
+      font-weight: 600; font-size: 0.85rem; transition: background 0.2s;
+    }
+    .btn-outline { border: 1px solid var(--border); color: var(--fg); background: transparent; }
+    .btn-outline:hover { background: var(--bg); border-color: var(--muted); }
+    .btn-primary { background: var(--accent); color: #fff; border: 1px solid var(--accent); }
+    .btn-primary:hover { background: var(--accent-hover); }
+
+    /* フッター */
+    footer { padding: 2rem 0; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center; }
+    footer a { color: inherit; }
+
+    /* ダークモード対応 */
     @media (prefers-color-scheme: dark) {
-      :root { --bg:#0b0b0c; --fg:#e6e6e6; --muted:#a6a6a6; --accent:#66a8ff; }
-      header, footer { border-color:#151516; }
-      .skill-badge { background:#333; }
+      :root { 
+        --bg: #0f0f10; 
+        --fg: #f3f4f6; 
+        --muted: #9ca3af; 
+        --accent: #3b82f6;
+        --accent-hover: #60a5fa;
+        --card-bg: #18181b; 
+        --border: #27272a;
+        --shadow: none;
+      }
+      .skill-badge { background: #333; color: #fff; }
+      .btn-outline { border-color: #333; }
+      .btn-outline:hover { background: #222; }
     }
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
-      <div class="brand">
-        <span>Yoshiaki Sakurai</span>
-      </div>
+      <a href="index.html" class="brand">
+        Yoshiaki Sakurai
+      </a>
       <nav>
         <a href="index.html" class="primary">Home</a>
-        <a href="privacy.html" target="_blank" rel="noopener" title="プライバシーポリシー">Privacy Policy</a>
+        <a href="privacy.html" target="_blank" rel="noopener">Privacy</a>
         <a href="mailto:vice0804@gmail.com">Contact</a>
       </nav>
     </header>
 
     <main>
       <section class="hero" aria-labelledby="hero-title">
-        <h1 id="hero-title">デベロッパー / ソフトウェアエンジニア</h1>
-        <p>
-        VB.NET / PL/SQL を用いた社内業務システム開発を本業とし、<br>
-        Flutter を使った iOS / Android アプリの個人開発・公開にも取り組んでいます。
-        </p>
-        <p>
-        日常や業務の中で感じた課題をもとに、<br>
-       「自分が本当に欲しかった機能」を形にすることを大切にし、<br>
-        継続的な改善とアップデートを行っています。</p>
-      </section>
-
-      <!-- 自己紹介 -->
-      <section class="about" aria-labelledby="about">
-        <h2 id="about">自己紹介</h2>
-        <p><strong>生年月日:</strong> 1986年8月4日</p>
-        <p>ユーザー体験を重視し、シンプルで持続可能なソフトウェアを目指しています。</p>
+        <h1 id="hero-title">Developer / <br>Software Engineer</h1>
+        <div class="hero-text">
+          <p>
+            VB.NET / PL/SQL を用いた業務システム開発を本業とし、<br>
+            Flutter を用いた iOS / Android アプリの個人開発に取り組んでいます。
+          </p>
+          <p style="margin-top:1rem;">
+            「自分が本当に欲しかった機能」を形にし、<br>
+            ユーザー体験を重視したシンプルで持続可能なソフトウェアを目指しています。
+          </p>
+        </div>
         <div class="skills">
           <span class="skill-badge">Flutter</span>
           <span class="skill-badge">VB.NET</span>
@@ -81,47 +149,47 @@
         </div>
       </section>
 
-      <!-- プロジェクト -->
       <section class="projects" aria-labelledby="projects">
         <h2 id="projects">Projects</h2>
-        <ul>
-          <li>
+        <ul class="project-list">
+          
+          <li class="project-card">
             <div>
               <h3>バーコード一致チェッカー</h3>
-              <p>バーコードを読み込んで、バーコードの値が一致しているかを判定。</p>
-              <p>カメラ内にあるバーコードの値をタップして読み込むので、</p>
-              <p>画面内に複数バーコードがあっても読みやすい</p>
-              <p>1：1、1:xの切り替え、履歴確認も可能</p>
+              <p>バーコードを読み込んで、値が一致しているかを瞬時に判定する業務効率化アプリです。</p>
+              <p>カメラ映像内のバーコードをタップして選択できるため、複数のコードが密集していても誤読を防げます。1対1、1対多の照合モード切り替えや、履歴確認機能も搭載。</p>
             </div>
             <div class="actions">
               <a class="btn btn-outline" href="https://apps.apple.com/us/app/バーコード一致チェッカー/id6755950925" target="_blank" rel="noopener">App Store</a>
               <a class="btn btn-outline" href="https://play.google.com/store/apps/details?id=com.sakuraiyoshi.barcodechecker" target="_blank" rel="noopener">Google Play</a>
             </div>
           </li>
-          <!--<li> コピペ用
-            <div>
-              <h3>新しいアプリ名</h3>
-              <p>アプリの説明をここに記載します。</p>
-            </div>
-            <div class="actions">
-              <a class="btn btn-outline" href="https://apps.apple.com/" target="_blank" rel="noopener">App Store</a>
-              <a class="btn btn-outline" href="https://play.google.com/store/apps" target="_blank" rel="noopener">Google Play</a>
-            </div>
-          </li>-->
+          
         </ul>
       </section>
 
-      <!-- 連絡先 -->
-      <section aria-labelledby="contact" style="margin-top:1.5rem;">
+      <section class="about" aria-labelledby="about">
+        <h2 id="about">About</h2>
+        <p><strong>Yoshiaki Sakurai</strong> (sakurai-yoshi)</p>
+        <p class="hero-text">
+          1986年8月4日生まれ。長野県在住。<br>
+          日常や業務の中で感じた「不便」を技術で解決することに喜びを感じています。継続的な改善とアップデートを大切にしています。
+        </p>
+      </section>
+
+      <section aria-labelledby="contact">
         <h2 id="contact">Contact</h2>
-        <p>ご質問やご依頼はメールで受け付けています： <a class="small" href="mailto:vice0804@gmail.com">vice0804@gmail.com</a></p>
+        <p class="hero-text">
+          ご質問やご依頼はメールにてお待ちしております。<br>
+          <a href="mailto:vice0804@gmail.com" style="color:var(--accent); text-decoration:underline;">vice0804@gmail.com</a>
+        </p>
       </section>
     </main>
 
     <footer>
-      <div>© <strong>Yoshiaki Sakurai</strong></div>
+      <div>©<strong>Yoshiaki Sakurai</strong></div>
       <div>
-        <a href="privacy.html" target="_blank" rel="noopener">プライバシーポリシー</a>
+        <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
       </div>
     </footer>
   </div>
