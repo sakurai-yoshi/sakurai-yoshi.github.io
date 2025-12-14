@@ -1,84 +1,112 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>プライバシーポリシー</title>
-    <style>
-        body { font-family: sans-serif; line-height: 1.6; padding: 1em; }
-        h1, h2 { border-bottom: 1px solid #ccc; padding-bottom: 0.5em; }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Yoshiaki Sakurai — Developer</title>
+  <meta name="description" content="Yoshiaki Sakurai (sakurai-yoshi) のデベロッパーページ。プロジェクト、ブログ、連絡先、プライバシーポリシーへのリンクを掲載しています。" />
+  <style>
+    :root {
+      --bg: #fff;
+      --fg: #111;
+      --muted: #666;
+      --accent: #0b66ff;
+      --max-w: 960px;
+    }
+    html,body { height:100%; margin:0; font-family: -apple-system,BlinkMacSystemFont,"Helvetica Neue",Segoe UI,Roboto,"Hiragino Kaku Gothic ProN","游ゴシック",sans-serif; color:var(--fg); background:var(--bg); }
+    .wrap { max-width:var(--max-w); margin:2rem auto; padding:0 1rem; }
+    header { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:2rem; }
+    .brand { font-weight:700; font-size:1.125rem; display:flex; align-items:center; gap:.5rem; }
+    nav a { color:var(--muted); text-decoration:none; margin-left:1rem; font-size:.95rem; }
+    nav a.primary { color:var(--accent); font-weight:600; }
+    .hero { padding:2rem 0; border-bottom:1px solid #eee; }
+    .hero h1 { margin:0 0 .5rem 0; font-size:1.75rem; }
+    .hero p { margin:0; color:var(--muted); }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; margin:1.5rem 0; }
+    .card { border:1px solid #eee; padding:1rem; border-radius:8px; background:#fafafa; }
+    .card h3 { margin:0 0 .5rem 0; font-size:1.05rem; }
+    .card p { margin:0; color:var(--muted); font-size:.95rem; }
+    .actions { margin-top:1rem; display:flex; gap:.5rem; flex-wrap:wrap; }
+    .btn { display:inline-block; padding:.5rem .75rem; border-radius:6px; text-decoration:none; font-weight:600; font-size:.9rem; }
+    .btn-outline { border:1px solid #ddd; color:var(--fg); background:transparent; }
+    .btn-primary { background:var(--accent); color:#fff; border:1px solid var(--accent); }
+    footer { margin-top:3rem; padding-top:1rem; border-top:1px solid #eee; color:var(--muted); font-size:.9rem; display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; }
+    a.small { color:inherit; text-decoration:underline; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg:#0b0b0c; --fg:#e6e6e6; --muted:#a6a6a6; --accent:#66a8ff; }
+      .card { background:#070708; border-color:#151516; }
+      header, footer { border-color:#151516; }
+    }
+  </style>
 </head>
 <body>
-    <h1>プライバシーポリシー</h1>
-    
-    <h2>1. はじめに</h2>
-    <p>本アプリ（以下「当アプリ」）の開発者（以下「当方」）は、ユーザーのプライバシーを尊重し、個人情報の保護に細心の注意を払っています。本プライバシーポリシーは、当アプリが収集する情報、その利用目的、およびユーザーの権利について説明するものです。</p>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <span>Yoshiaki Sakurai</span>
+        <small style="color:var(--muted); font-weight:400;">(sakurai-yoshi)</small>
+      </div>
+      <nav>
+        <a href="index.html" class="primary">Home</a>
+        <a href="https://github.com/sakurai-yoshi" target="_blank" rel="noopener">GitHub</a>
+        <a href="privacy.html" title="プライバシーポリシー">Privacy Policy</a>
+        <a href="mailto:vice0804@gmail.com">Contact</a>
+      </nav>
+    </header>
 
-    <h2>2. 収集する情報とその目的</h2>
-    <p>当アプリは、以下の目的のために、必要最小限の情報を収集・利用します。</p>
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <h1 id="hero-title">デベロッパー / ソフトウェアエンジニア</h1>
+        <p>モバイルアプリやツールの開発を行っています。ここでは主なプロジェクト、ブログ、連絡先情報を掲載しています。</p>
+        <div style="margin-top:1rem;" class="actions">
+          <a class="btn btn-primary" href="https://github.com/sakurai-yoshi" target="_blank" rel="noopener">GitHub を見る</a>
+          <a class="btn btn-outline" href="privacy.html">プライバシーポリシー</a>
+        </div>
+      </section>
 
-    <h4>a. アプリのコア機能の提供</h4>
-    <ul>
-        <li><strong>カメラへのアクセス:</strong> バーコードやQRコードをスキャンするためにカメラへのアクセス許可を求めます。カメラ映像がリアルタイムで処理されるだけで、映像が保存・送信されることはありません。</li>
-        <li><strong>スキャンした情報:</strong> スキャンしたバーコードの情報や、ユーザーが任意で入力した関連名などのデータを、履歴としてアプリ内のデータベースに保存します。このデータは、ユーザーが後から確認するために利用されます。</li>
-        <li><strong>ストレージへのアクセス許可:</strong> ユーザーがスキャン履歴などをCSVファイルとしてエクスポートする機能を利用する場合に、ファイルをデバイスに保存するためにストレージへのアクセス許可を求めます。</li>
-    </ul>
+      <section aria-labelledby="projects" style="margin-top:1.5rem;">
+        <h2 id="projects" style="margin:.75rem 0 0.5rem 0;">Projects</h2>
+        <div class="grid">
+          <article class="card">
+            <h3>バーコード / QR スキャンアプリ</h3>
+            <p>ユーザーのローカルにスキャン履歴を保存できる軽量のスキャンアプリ。広告・サブスクリプション対応。</p>
+            <div style="margin-top:.75rem;">
+              <a class="btn btn-outline" href="https://play.google.com/store/apps" target="_blank" rel="noopener">ストア</a>
+            </div>
+          </article>
 
-    <h4>b. アプリ内課金</h4>
-    <ul>
-        <li><strong>購入情報:</strong> プレミアム機能などのサブスクリプションを購入・復元する際、購入処理はGoogle PlayストアまたはApp Storeによって行われます。当アプリがユーザーのクレジットカード番号やパスワードなどの決済情報を取得・保存することはありません。購入状況（購読中かどうかなど）を管理するために、プラットフォームから提供される購入履歴（レシート情報）のみを利用します。</li>
-    </ul>
+          <article class="card">
+            <h3>ツール & ライブラリ</h3>
+            <p>小さなユーティリティやスニペットを公開しています。GitHub にてソースコードを管理中。</p>
+            <div style="margin-top:.75rem;">
+              <a class="btn btn-outline" href="https://github.com/sakurai-yoshi" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </article>
 
-    <h4>c. 広告配信</h4>
-    <ul>
-        <li><strong>デバイス情報および利用状況:</strong> ユーザーに適切な広告を表示するため、Google AdMobなどの第三者広告配信事業者が、お使いのデバイスの広告ID、IPアドレス、言語設定、大まかな位置情報などを自動的に収集する場合があります。</li>
-    </ul>
-    
-    <h4>d. アプリの品質向上</h4>
-    <ul>
-        <li><strong>クラッシュレポートおよび利用状況分析:</strong> アプリの不具合改善やサービス向上のため、Firebaseなどのサービスを利用し、アプリのクラッシュ情報や機能の利用頻度などを匿名で収集します。これには、個人を特定する情報は含まれません。</li>
-    </ul>
+          <article class="card">
+            <h3>ブログ・更新情報</h3>
+            <p>開発メモやリリース情報、技術的なメモを随時公開予定です。</p>
+            <div style="margin-top:.75rem;">
+              <a class="btn btn-outline" href="#" onclick="alert('準備中'); return false;">近日公開</a>
+            </div>
+          </article>
+        </div>
+      </section>
 
-    <h2>3. 情報の共有と第三者提供</h2>
-    <p>当方は、以下の場合を除き、ユーザーの情報を本人の同意なく第三者に提供することはありません。</p>
-    <ul>
-        <li>法令に基づく開示請求があった場合。</li>
-        <li>人の生命、身体または財産の保護のために必要がある場合であって、本人の同意を得ることが困難であるとき。</li>
-    </ul>
-    <p>なお、前項で記載した目的のため、以下の第三者サービスを利用しており、各社のプライバシーポリシーに基づいて情報が取り扱われます。</p>
-    <ul>
-        <li><strong>Google Play Services / App Store:</strong> アプリの配信、決済処理</li>
-        <li><strong>Google AdMob:</strong> 広告配信 (<a href="https://policies.google.com/technologies/ads" target="_blank">Google 広告に関するポリシー</a>)</li>
-        <li><strong>Firebase (Google LLC):</strong> 利用状況分析、クラッシュレポート (<a href="https://policies.google.com/privacy" target="_blank">Google プライバシーポリシー</a>)</li>
-    </ul>
+      <section aria-labelledby="contact" style="margin-top:1.5rem;">
+        <h2 id="contact">Contact</h2>
+        <p>ご質問やご依頼はメールで受け付けています： <a class="small" href="mailto:vice0804@gmail.com">vice0804@gmail.com</a></p>
+      </section>
+    </main>
 
-    <h2>4. データの保存場所と保持期間</h2>
-    <p>ユーザーがスキャンした履歴等のデータは、全てお使いのデバイス内の安全な領域に保存されます。これらのデータが、当方のサーバー等に自動的に送信されることはありません。</p>
-    <p>デバイス内に保存されたデータは、ユーザーがアプリ内の機能で削除するか、アプリをアンインストールするまで保持されます。</p>
-
-    <h2>5. データセキュリティ</h2>
-    <p>当方は、ユーザーの情報の安全性を確保するため、業界標準のセキュリティ対策を講じています。デバイス内に保存されるデータは、オペレーティングシステムが提供する保護機能によって保護されます。</p>
-
-    <h2>6. ユーザーの権利と選択肢</h2>
-    <ul>
-        <li><strong>データの削除:</strong> ユーザーはいつでも、アプリ内のリセット機能などを用いて、デバイスに保存されたスキャン履歴を削除することができます。</li>
-        <li><strong>サブスクリプションの管理:</strong> 購入したサブスクリプションの確認や解約は、Google PlayストアまたはApp Storeのアカウント管理画面から行うことができます。</li>
-        <li><strong>広告のパーソナライズ拒否:</strong> お使いのデバイスの設定から広告IDをリセットするか、パーソナライズ広告をオプトアウト（無効化）することができます。</li>
-    </ul>
-
-    <h2>7. お子様のプライバシー</h2>
-    <p>当アプリは、13歳未満のお子様を対象としていません。意図的に13歳未満のユーザーから個人情報を収集することはありません。万が一、そのような情報を収集してしまったことが判明した場合は、速やかに削除いたします。</p>
-
-    <h2>8. 本ポリシーの変更</h2>
-    <p>当方は、法令の変更やサービスの改善に伴い、本プライバシーポリシーを改定することがあります。重要な変更がある場合は、アプリ内での通知やストア掲載情報の更新など、わかりやすい方法でお知らせします。</p>
-
-    <h2>9. お問い合わせ</h2>
-    <p>本プライバシーポリシーに関するご質問やご懸念がある場合は、以下の連絡先までお願いいたします。</p>
-    <ul>
-        <li>メールアドレス: <strong>vice0804@gmail.com</strong></li>
-        <li>開発者名: <strong>Yoshiaki_Sakurai</strong></li>
-    </ul>
-
+    <footer>
+      <div>© <strong>Yoshiaki Sakurai</strong></div>
+      <div>
+        <a href="privacy.html">プライバシーポリシー</a>
+        <span style="margin:0 .5rem;">·</span>
+        <a href="https://github.com/sakurai-yoshi" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </footer>
+  </div>
 </body>
 </html>
