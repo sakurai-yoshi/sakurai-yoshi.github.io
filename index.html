@@ -29,7 +29,7 @@
     header { padding: 2rem 0; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
     .brand { 
       font-weight: 800; 
-      font-size: 1.5rem; /* 名前を目立たせる */
+      font-size: 1.5rem;
       color: var(--fg);
       letter-spacing: -0.03em;
       text-decoration: none;
@@ -54,45 +54,56 @@
     .skills { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem; }
     .skill-badge { background: var(--fg); color: var(--bg); padding: 0.25rem 0.75rem; border-radius: 99px; font-size: 0.8rem; font-weight: 600; }
     
-    /* プロジェクト（カードデザイン） */
-    .project-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 1.5rem; grid-template-columns: 1fr; }
-    /* プロジェクトが1つのときは幅いっぱいに表示されます。
-       今後増えた場合は自動で2列になります。
-    */
-    @media (min-width: 600px) {
-      .project-list { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-    }
-
-    .project-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
+    /* アプリ一覧リンク用デザイン */
+    .app-link-card {
+      background: linear-gradient(135deg, var(--accent), #4f46e5);
+      color: #ffffff;
       border-radius: 16px;
-      padding: 1.5rem;
+      padding: 2.5rem 1.5rem;
+      text-align: center;
       box-shadow: var(--shadow);
       transition: transform 0.2s, box-shadow 0.2s;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .app-link-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.15);
+    }
+    .app-link-card h3 {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    .app-link-card p {
+      margin: 0;
+      font-size: 1rem;
+      opacity: 0.9;
+      max-width: 500px;
     }
     
-    .project-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    }
-
-    .project-card h3 { margin: 0 0 0.5rem 0; font-size: 1.25rem; font-weight: 700; }
-    .project-card p { margin: 0 0 1rem 0; color: var(--muted); font-size: 0.95rem; flex-grow: 1; }
-    
-    .actions { display: flex; gap: 0.75rem; margin-top: auto; }
     .btn { 
       display: inline-flex; align-items: center; justify-content: center;
       padding: 0.5rem 1rem; border-radius: 8px; text-decoration: none; 
-      font-weight: 600; font-size: 0.85rem; transition: background 0.2s;
+      font-weight: 600; font-size: 0.85rem; transition: background 0.2s, transform 0.2s;
     }
-    .btn-outline { border: 1px solid var(--border); color: var(--fg); background: transparent; }
-    .btn-outline:hover { background: var(--bg); border-color: var(--muted); }
     .btn-primary { background: var(--accent); color: #fff; border: 1px solid var(--accent); }
     .btn-primary:hover { background: var(--accent-hover); }
+    
+    /* アプリ一覧カード内のボタンを反転カラーに */
+    .app-link-card .btn {
+      background: #ffffff;
+      color: var(--accent);
+      font-size: 1rem;
+      padding: 0.75rem 2rem;
+      border-radius: 99px;
+    }
+    .app-link-card .btn:hover {
+      background: #f3f4f6;
+      transform: scale(1.05);
+    }
 
     /* フッター */
     footer { padding: 2rem 0; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center; }
@@ -111,8 +122,7 @@
         --shadow: none;
       }
       .skill-badge { background: #333; color: #fff; }
-      .btn-outline { border-color: #333; }
-      .btn-outline:hover { background: #222; }
+      .app-link-card { background: linear-gradient(135deg, #2563eb, #4338ca); }
     }
   </style>
 </head>
@@ -150,34 +160,14 @@
       </section>
 
       <section class="projects" aria-labelledby="projects">
-        <h2 id="projects">Projects</h2>
-        <ul class="project-list">
-          
-          <li class="project-card">
-            <div>
-              <h3>バーコード一致チェッカー</h3>
-              <p>バーコードを読み込んで、値が一致しているかを瞬時に判定する業務効率化アプリです。</p>
-              <p>カメラ映像内のバーコードをタップして選択できるため、複数のコードが密集していても誤読を防げます。1対1、1対多の照合モード切り替えや、履歴確認機能も搭載。</p>
-            </div>
-            <div class="actions">
-              <a class="btn btn-outline" href="https://apps.apple.com/us/app/バーコード一致チェッカー/id6755950925" target="_blank" rel="noopener">App Store</a>
-              <a class="btn btn-outline" href="https://play.google.com/store/apps/details?id=com.sakuraiyoshi.barcodechecker" target="_blank" rel="noopener">Google Play</a>
-            </div>
-          </li>
-
-          <li class="project-card">
-            <div>
-              <h3>EkidenWatch</h3>
-              <p>駅伝やマラソン大会のタイム計測、選手のラップタイム管理、そしてチームの成績分析に特化した多機能ストップウォッチアプリ</p>
-              <p>複数の選手やチームのタイムを同時に、そして直感的に記録できます。</p>
-              <p>総合順位や区間順位、区間タイム、個人ごとの順位変動グラフなどを自動で集計・表示。</p>
-            </div>
-            <div class="actions">
-              <a class="btn btn-outline" href="https://apps.apple.com/us/app/ekidenwatch/id6756030408" target="_blank" rel="noopener">App Store</a>
-            </div>
-          </li>
-          
-        </ul>
+        <h2 id="projects">Apps & Projects</h2>
+        <div class="app-link-card">
+          <div>
+            <h3>開発アプリ一覧</h3>
+            <p>これまでに開発した iOS / Android アプリケーションの一覧は、こちらのページにまとめています。</p>
+          </div>
+          <a class="btn" href="https://lit.link/yoshiapp?" target="_blank" rel="noopener">Lit.Link でアプリを見る</a>
+        </div>
       </section>
 
       <section class="about" aria-labelledby="about">
@@ -197,7 +187,7 @@
         </p>
       </section>
       
-            <section class="playground" aria-labelledby="playground">
+      <section class="playground" aria-labelledby="playground">
         <h2 id="playground">Playground</h2>
         <p class="hero-text">シンプルな反射神経ゲームです。10秒間で何回クリックできるか挑戦してみてください。</p>
         
@@ -256,16 +246,14 @@
           }
           .target-circle {
             position: absolute;
-            /* widthとheightはJSで動的に変更するため、ここでは最小値を設定 */
             min-width: 30px; 
             min-height: 30px;
             border-radius: 50%;
-            /* background: var(--accent); <- JSでランダムに変更 */
             border: 2px solid #fff;
             box-shadow: 0 4px 6px rgba(0,0,0,0.2);
             cursor: pointer;
-            display: none; /* 最初は非表示 */
-            transition: transform 0.05s, background 0.2s; /* 色変更もスムーズに */
+            display: none;
+            transition: transform 0.05s, background 0.2s;
             padding: 0;
           }
           .target-circle:active { transform: scale(0.9); }
@@ -285,11 +273,9 @@
             let timerId = null;
             let isPlaying = false;
             
-            // サイズと色の最小値・最大値
             const MIN_SIZE = 30; // px
             const MAX_SIZE = 70; // px
 
-            // ランダムな色を生成する関数
             function getRandomColor() {
               const r = Math.floor(Math.random() * 256);
               const g = Math.floor(Math.random() * 256);
@@ -297,26 +283,20 @@
               return `rgb(${r}, ${g}, ${b})`;
             }
 
-            // ランダムな位置、サイズ、色に移動させる関数
             function moveTarget() {
               if (!isPlaying) return;
 
-              // 1. サイズをランダムに決定
               const size = Math.floor(Math.random() * (MAX_SIZE - MIN_SIZE + 1)) + MIN_SIZE;
               target.style.width = size + 'px';
               target.style.height = size + 'px';
               
-              // 2. 色をランダムに決定
               target.style.backgroundColor = getRandomColor();
               
-              // 3. 位置をランダムに決定
               const areaRect = area.getBoundingClientRect();
               
-              // 親要素内のランダムな座標を計算
               const maxX = areaRect.width - size;
               const maxY = areaRect.height - size;
               
-              // xとyが0未満にならないようにMath.max(0, ...)で保証
               const x = Math.max(0, Math.random() * maxX);
               const y = Math.max(0, Math.random() * maxY);
 
@@ -325,7 +305,6 @@
               target.style.display = 'block';
             }
 
-            // ゲーム開始
             startBtn.addEventListener('click', () => {
               score = 0;
               timeLeft = 10.00;
@@ -334,9 +313,8 @@
               timeEl.textContent = timeLeft.toFixed(2);
               
               overlay.style.display = 'none';
-              moveTarget(); // 最初のターゲットを配置
+              moveTarget(); 
 
-              // タイマー始動
               timerId = setInterval(() => {
                 timeLeft -= 0.01;
                 if (timeLeft <= 0) {
@@ -347,15 +325,13 @@
               }, 10);
             });
 
-            // クリック/タップ時の共通処理
             function hit() {
               if (!isPlaying) return;
               score++;
               scoreEl.textContent = score;
-              moveTarget(); // 色・サイズ・位置を変更して再配置
+              moveTarget(); 
             }
 
-            // イベントリスナー
             target.addEventListener('mousedown', (e) => {
               hit();
               e.stopPropagation(); 
@@ -366,14 +342,12 @@
               e.stopPropagation();
             });
 
-            // ゲーム終了
             function endGame() {
               isPlaying = false;
               clearInterval(timerId);
               target.style.display = 'none';
               overlay.style.display = 'flex';
               
-              // 結果表示
               startBtn.innerHTML = `Time Up!<br>Score: ${score}<br><span style="font-size:0.8em; font-weight:normal">Play Again</span>`;
             }
           })();
