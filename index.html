@@ -3,153 +3,193 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Saku — Developer</title>
-  <meta name="description" content="デベロッパーページ。プロジェクト、自己紹介、連絡先、プライバシーポリシーへのリンクを掲載しています。" />
+  <title>Saku — Software Engineer</title>
+  <meta name="description" content="ソフトウェアエンジニア Saku のポートフォリオ。プロジェクト、自己紹介、お問い合わせ、プライバシーポリシーへのリンクを掲載しています。" />
   <style>
+    /* 【保守性のための設計】
+       カラーパレットやレイアウトの基準値をCSS変数（Custom Properties）として一元管理します。
+       将来的な色味の変更や余白の微調整を容易にします。
+    */
     :root {
-      /* カラーパレット */
-      --bg: #f9fafb;
-      --fg: #1f2937;
-      --muted: #6b7280;
-      --accent: #0b66ff;
-      --accent-hover: #0056e0;
+      --bg: #f8fafc;
+      --fg: #0f172a;
+      --muted: #475569;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
       --card-bg: #ffffff;
-      --border: #e5e7eb;
-      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-      --max-w: 800px;
+      --border: #e2e8f0;
+      --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+      --radius: 1rem;
+      --max-w: 1040px;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "游ゴシック", sans-serif;
     }
 
-    /* 基本設定 */
-    html, body { height: 100%; margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "游ゴシック", sans-serif; color: var(--fg); background: var(--bg); line-height: 1.6; }
+    /* 全体設定 */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; font-family: var(--font-sans); color: var(--fg); background: var(--bg); line-height: 1.6; }
     
-    /* レイアウトコンテナ */
     .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 1.5rem; display: flex; flex-direction: column; min-height: 100vh; }
     
     /* ヘッダー */
-    header { padding: 2rem 0; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
-    .brand { 
-      font-weight: 800; 
-      font-size: 1.5rem;
-      color: var(--fg);
-      letter-spacing: -0.03em;
-      text-decoration: none;
-    }
+    header { padding: 2.5rem 0; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .brand { font-weight: 800; font-size: 1.25rem; color: var(--fg); letter-spacing: -0.03em; text-decoration: none; }
     nav { display: flex; gap: 1.5rem; }
     nav a { color: var(--muted); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: color 0.2s; }
     nav a:hover, nav a.primary { color: var(--accent); }
 
-    /* メインコンテンツ */
-    main { flex: 1; }
+    /* メインコンテンツ（Bento Gridレイアウト） */
+    main { 
+      flex: 1; 
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* 基本は2カラム構成 */
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
 
-    /* ヒーローセクション */
-    .hero { padding: 3rem 0; }
-    .hero h1 { margin: 0 0 1rem 0; font-size: 2rem; letter-spacing: -0.02em; line-height: 1.3; }
-    .hero-text { color: var(--muted); font-size: 1.05rem; margin-bottom: 1.5rem; }
-
-    /* セクション共通 */
-    section { margin-bottom: 4rem; }
-    h2 { font-size: 1.25rem; margin-bottom: 1rem; border-left: 4px solid var(--accent); padding-left: 0.75rem; line-height: 1.2; }
-
-    /* スキルバッジ */
-    .skills { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem; }
-    .skill-badge { background: var(--fg); color: var(--bg); padding: 0.25rem 0.75rem; border-radius: 99px; font-size: 0.8rem; font-weight: 600; }
-    
-    /* アプリ一覧リンク用デザイン */
-    .app-link-card {
-      background: linear-gradient(135deg, var(--accent), #4f46e5);
-      color: #ffffff;
-      border-radius: 16px;
-      padding: 2.5rem 1.5rem;
-      text-align: center;
+    /* 【実務性を重視したコンポーネント設計】
+       Bento Gridの基本となるカードスタイル。
+       過度な装飾を排し、細いボーダーと微細なシャドウでモダンさを演出します。
+    */
+    .bento-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.5rem;
       box-shadow: var(--shadow);
-      transition: transform 0.2s, box-shadow 0.2s;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      gap: 1.5rem;
+      justify-content: space-between;
     }
-    .app-link-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.15);
-    }
-    .app-link-card h3 {
-      margin: 0;
-      font-size: 1.5rem;
-      font-weight: 700;
-    }
-    .app-link-card p {
-      margin: 0;
-      font-size: 1rem;
-      opacity: 0.9;
-      max-width: 500px;
-    }
+
+    /* グリッドの配置制御用ユーティリティクラス */
+    .col-span-2 { grid-column: span 2; }
+
+    /* 各セクションのタイポグラフィ */
+    h1 { font-size: 2.25rem; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 1rem; }
+    h2 { font-size: 1.25rem; letter-spacing: -0.02em; margin-bottom: 1rem; color: var(--fg); display: flex; align-items: center; gap: 0.5rem; }
+    .text-muted { color: var(--muted); font-size: 1rem; }
+
+    /* ヒーローセクション */
+    .hero-card { justify-content: center; min-height: 280px; }
+    .hero-text { max-width: 640px; margin-bottom: 1.5rem; }
     
+    /* スキルバッジ */
+    .skills { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .skill-badge { background: #f1f5f9; color: var(--muted); padding: 0.375rem 0.75rem; border-radius: 99px; font-size: 0.8rem; font-weight: 600; border: 1px solid var(--border); }
+    
+    /* ボタンの共通モダンデザイン */
     .btn { 
       display: inline-flex; align-items: center; justify-content: center;
-      padding: 0.5rem 1rem; border-radius: 8px; text-decoration: none; 
-      font-weight: 600; font-size: 0.85rem; transition: background 0.2s, transform 0.2s;
+      padding: 0.75rem 1.5rem; border-radius: 0.5rem; text-decoration: none; 
+      font-weight: 600; font-size: 0.9rem; transition: all 0.2s ease;
+      cursor: pointer; border: none;
     }
-    .btn-primary { background: var(--accent); color: #fff; border: 1px solid var(--accent); }
-    .btn-primary:hover { background: var(--accent-hover); }
-    
-    /* アプリ一覧カード内のボタンを反転カラーに */
-    .app-link-card .btn {
-      background: #ffffff;
-      color: var(--accent);
+    .btn-primary { background: var(--fg); color: var(--card-bg); }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-secondary { background: transparent; color: var(--accent); border: 1px solid var(--border); }
+    .btn-secondary:hover { background: #f8fafc; border-color: var(--accent); }
+
+    /* プロジェクト・連絡先カードの固有調整 */
+    .card-content { margin-bottom: 2rem; }
+    .card-content p { margin-top: 0.5rem; color: var(--muted); font-size: 0.95rem; }
+
+    /* Playground (ミニゲーム) のモダン化 */
+    .game-wrapper {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      overflow: hidden;
+      margin-top: 1rem;
+    }
+    .game-header {
+      padding: 0.75rem 1rem;
+      background: var(--card-bg);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      font-family: monospace;
       font-size: 1rem;
-      padding: 0.75rem 2rem;
-      border-radius: 99px;
+      font-weight: 600;
     }
-    .app-link-card .btn:hover {
-      background: #f3f4f6;
-      transform: scale(1.05);
+    .game-area {
+      position: relative;
+      height: 240px;
+      background: var(--bg);
+      cursor: crosshair;
     }
+    .game-overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(248, 250, 252, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      text-align: center;
+    }
+    .target-circle {
+      position: absolute;
+      min-width: 40px; min-height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      transition: transform 0.05s;
+      border: none;
+      outline: none;
+    }
+    .target-circle:active { transform: scale(0.9); }
 
     /* フッター */
-    footer { padding: 2rem 0; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center; }
-    footer a { color: inherit; }
+    footer { padding: 2.5rem 0; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center; }
+    footer a { color: inherit; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
 
-    /* ダークモード対応 */
+    /* 【レスポンシブ対応】
+       画面幅が狭いデバイス（タブレット・スマホ）では、2カラムの指定を解除して1カラムに縦積みします。
+    */
+    @media (max-width: 768px) {
+      main { grid-template-columns: 1fr; gap: 1rem; }
+      .col-span-2 { grid-column: span 1; }
+      .bento-card { padding: 1.5rem; }
+      header { padding: 1.5rem 0; }
+    }
+
+    /* ダークモード対応（メディアクエリによる自動切り替え） */
     @media (prefers-color-scheme: dark) {
       :root { 
-        --bg: #0f0f10; 
-        --fg: #f3f4f6; 
-        --muted: #9ca3af; 
+        --bg: #09090b; 
+        --fg: #f4f4f5; 
+        --muted: #a1a1aa; 
         --accent: #3b82f6;
         --accent-hover: #60a5fa;
         --card-bg: #18181b; 
         --border: #27272a;
         --shadow: none;
       }
-      .skill-badge { background: #333; color: #fff; }
-      .app-link-card { background: linear-gradient(135deg, #2563eb, #4338ca); }
+      .skill-badge { background: #27272a; color: var(--muted); border-color: var(--border); }
+      .btn-primary { background: var(--fg); color: var(--bg); }
+      .btn-secondary:hover { background: #27272a; }
+      .game-overlay { background: rgba(9, 9, 11, 0.9); }
     }
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
-      <a href="index.html" class="brand">
-      </a>
+      <a href="index.html" class="brand">Saku</a>
       <nav>
         <a href="index.html" class="primary">Home</a>
         <a href="privacy.html" target="_blank" rel="noopener">Privacy</a>
-        <a href="mailto:vice0804@gmail.com">Contact</a>
+        <a href="https://forms.gle/RQD5RKykttG9AReY9" target="_blank" rel="noopener">Contact</a>
       </nav>
     </header>
 
     <main>
-      <section class="hero" aria-labelledby="hero-title">
-        <h1 id="hero-title">Developer / <br>Software Engineer</h1>
-        <div class="hero-text">
-          <p>
-            VB.NET / PL/SQL を用いた業務システム開発を本業とし、<br>
-            Flutter を用いた iOS / Android アプリの個人開発に取り組んでいます。
-          </p>
-          <p style="margin-top:1rem;">
-            「自分が本当に欲しかった機能」を形にし、<br>
-            ユーザー体験を重視したシンプルで持続可能なソフトウェアを目指しています。
-          </p>
+      <section class="bento-card col-span-2 hero-card" aria-labelledby="hero-title">
+        <h1 id="hero-title">Software Engineer</h1>
+        <div class="hero-text text-muted">
+          <p>業務システム開発（VB.NET / PL/SQL）をコアスキルとし、Flutterを用いたクロスプラットフォーム向けのアプリケーション開発を手掛けています。</p>
+          <p style="margin-top: 0.5rem;">ユーザー体験を重視した、シンプルで持続可能なソフトウェアを追求しています。</p>
         </div>
         <div class="skills">
           <span class="skill-badge">Flutter</span>
@@ -158,104 +198,49 @@
         </div>
       </section>
 
-      <section class="projects" aria-labelledby="projects">
-        <h2 id="projects">Apps & Projects</h2>
-        <div class="app-link-card">
-          <div>
-            <h3>開発アプリ一覧</h3>
-            <p>これまでに開発した iOS / Android アプリケーションの一覧は、こちらのページにまとめています。</p>
-          </div>
-          <a class="btn" href="https://lit.link/yoshiapp?" target="_blank" rel="noopener">Lit.Link でアプリを見る</a>
+      <section class="bento-card" aria-labelledby="projects-title">
+        <div class="card-content">
+          <h2 id="projects-title">Apps & Projects</h2>
+          <p>これまでにリリースしたアプリケーションの開発実績およびプロジェクト一覧です。</p>
+        </div>
+        <a class="btn btn-secondary" href="https://lit.link/yoshiapp?" target="_blank" rel="noopener">プロダクト一覧を見る</a>
+      </section>
+
+      <section class="bento-card" aria-labelledby="about-title">
+        <div class="card-content">
+          <h2 id="about-title">About</h2>
+          <p>長野県を拠点に活動。日常や業務の中に潜む課題を技術によって解決すること、そして開発したプロダクトの継続的な改善とアップデートに注力しています。</p>
         </div>
       </section>
 
-      <section class="about" aria-labelledby="about">
-        <h2 id="about">About</h2>
-        <p class="hero-text">
-          1986年8月4日生まれ。長野県在住。<br>
-          日常や業務の中で感じた「不便」を技術で解決することに喜びを感じています。継続的な改善とアップデートを大切にしています。
-        </p>
-      </section>
-
-      <section aria-labelledby="contact">
-        <h2 id="contact">Contact</h2>
-        <p class="hero-text">
-          ご質問やご依頼はメールにてお待ちしております。<br>
-          <a href="mailto:vice0804@gmail.com" style="color:var(--accent); text-decoration:underline;">vice0804@gmail.com</a>
-        </p>
+      <section class="bento-card col-span-2" aria-labelledby="contact-title">
+        <div class="card-content">
+          <h2 id="contact-title">Contact</h2>
+          <p>不具合のご報告、アプリに関するご意見、または開発のご依頼など、各種お問い合わせは以下の専用フォームよりお気軽にお寄せください。</p>
+        </div>
+        <div>
+          <a class="btn btn-primary" href="https://forms.gle/RQD5RKykttG9AReY9" target="_blank" rel="noopener">お問い合わせフォームを開く</a>
+        </div>
       </section>
       
-      <section class="playground" aria-labelledby="playground">
-        <h2 id="playground">Playground</h2>
-        <p class="hero-text">シンプルな反射神経ゲームです。10秒間で何回クリックできるか挑戦してみてください。</p>
+      <section class="bento-card col-span-2" aria-labelledby="playground-title">
+        <div class="card-content">
+          <h2 id="playground-title">Playground</h2>
+          <p>Webインタラクションを検証するためのシンプルな反射神経ゲームです。10秒間でのクリック（タップ）回数を計測します。</p>
+        </div>
         
         <div class="game-wrapper">
           <div class="game-header">
-            <span>Score: <strong id="score-val">0</strong></span>
-            <span>Time: <strong id="time-val">10.00</strong></span>
+            <span>SCORE: <span id="score-val">0</span></span>
+            <span>TIME: <span id="time-val">10.00</span>s</span>
           </div>
           <div id="game-area" class="game-area">
             <div id="start-overlay" class="game-overlay">
               <button id="start-btn" class="btn btn-primary">Start Game</button>
             </div>
-            <button id="target-circle" class="target-circle"></button>
+            <button id="target-circle" class="target-circle" aria-label="ターゲット"></button>
           </div>
         </div>
-
-        <style>
-          .game-wrapper {
-            max-width: 100%;
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            margin-top: 1rem;
-          }
-          .game-header {
-            padding: 1rem;
-            background: rgba(0,0,0,0.03);
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-            font-family: monospace;
-            font-size: 1.1rem;
-          }
-          .game-area {
-            position: relative;
-            height: 300px;
-            background: var(--bg);
-            cursor: crosshair;
-            overflow: hidden;
-          }
-          .game-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255,255,255,0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
-            flex-direction: column;
-            gap: 1rem;
-          }
-          @media (prefers-color-scheme: dark) {
-            .game-overlay { background: rgba(0,0,0,0.7); }
-          }
-          .target-circle {
-            position: absolute;
-            min-width: 30px; 
-            min-height: 30px;
-            border-radius: 50%;
-            border: 2px solid #fff;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-            cursor: pointer;
-            display: none;
-            transition: transform 0.05s, background 0.2s;
-            padding: 0;
-          }
-          .target-circle:active { transform: scale(0.9); }
-        </style>
 
         <script>
           (function() {
@@ -271,14 +256,14 @@
             let timerId = null;
             let isPlaying = false;
             
-            const MIN_SIZE = 30; // px
-            const MAX_SIZE = 70; // px
+            const MIN_SIZE = 40;
+            const MAX_SIZE = 60;
 
+            // モダンなニュアンスカラー（彩度を少し抑えた青・紫・緑系）をランダムに生成
             function getRandomColor() {
-              const r = Math.floor(Math.random() * 256);
-              const g = Math.floor(Math.random() * 256);
-              const b = Math.floor(Math.random() * 256);
-              return `rgb(${r}, ${g}, ${b})`;
+              const hues = [210, 230, 260, 150]; // 青、紺、紫、ミントグリーン
+              const randomHue = hues[Math.floor(Math.random() * hues.length)];
+              return `hsl(${randomHue}, 70%, 50%)`;
             }
 
             function moveTarget() {
@@ -287,11 +272,9 @@
               const size = Math.floor(Math.random() * (MAX_SIZE - MIN_SIZE + 1)) + MIN_SIZE;
               target.style.width = size + 'px';
               target.style.height = size + 'px';
-              
               target.style.backgroundColor = getRandomColor();
               
               const areaRect = area.getBoundingClientRect();
-              
               const maxX = areaRect.width - size;
               const maxY = areaRect.height - size;
               
@@ -346,16 +329,15 @@
               target.style.display = 'none';
               overlay.style.display = 'flex';
               
-              startBtn.innerHTML = `Time Up!<br>Score: ${score}<br><span style="font-size:0.8em; font-weight:normal">Play Again</span>`;
+              startBtn.innerHTML = `TIME UP!<br>SCORE: ${score}<br><span style="font-size:0.8rem; font-weight:normal; margin-top:0.5rem; display:block;">Try Again</span>`;
             }
           })();
         </script>
       </section>
-
     </main>
 
     <footer>
-      <div>©<strong>Yoshiaki Sakurai</strong></div>
+      <div>© Saku</div>
       <div>
         <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
       </div>
