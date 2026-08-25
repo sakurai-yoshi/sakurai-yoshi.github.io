@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ライフテラリウム（Life Terrarium）のプライバシーポリシー">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src 'self'; base-uri 'none'; form-action 'none'">
+  <title>ライフテラリウム — プライバシーポリシー</title>
+  <style>
+    :root { color-scheme: light dark; --bg: #f7faf7; --card: #fff; --fg: #18251f; --muted: #53635b; --border: #d9e2dc; --link: #276b50; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.75 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    main { width: min(800px, calc(100% - 2rem)); margin: 2rem auto; padding: clamp(1.25rem, 4vw, 3rem); background: var(--card); border: 1px solid var(--border); border-radius: 1rem; }
+    h1, h2, h3 { line-height: 1.35; }
+    h2 { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+    h3 { margin-top: 1.4rem; }
+    a { color: var(--link); }
+    .meta, .note { color: var(--muted); }
+    .language { margin-top: 4rem; padding-top: 2rem; border-top: 2px solid var(--border); }
+    @media (prefers-color-scheme: dark) { :root { --bg: #0b100d; --card: #171d19; --fg: #f1f6f2; --muted: #a8b5ac; --border: #364139; --link: #7dd3a8; } }
+  </style>
+</head>
+<body>
+  <main>
+    <p><a href="../privacy.html">プライバシーポリシー一覧へ戻る</a></p>
+    <h1>ライフテラリウム プライバシーポリシー</h1>
+    <p class="meta">提供者: Yoshiaki Sakurai<br>制定日: 2026年7月22日／最終更新日: 2026年8月25日</p>
+    <p>ライフテラリウム（Life Terrarium）は、利用者が許可した日々の健康データを端末内で小さな島の変化に変えるiOSアプリです。アカウント登録は必要ありません。</p>
+
+    <h2>端末内で利用する情報</h2>
+    <ul>
+      <li>Apple HealthKitの歩数、歩行・走行距離、睡眠時間を読み取り専用で利用します。HealthKitへの書き込みは行いません。</li>
+      <li>HealthKitデータ、HealthKitの許可状態、島の状態・履歴、素材、設定、通知設定は端末内で処理・保存します。</li>
+      <li>HealthKitデータと、そこから生成された島の情報を、広告、マーケティング、Analytics、データマイニングのために端末外へ送信しません。</li>
+    </ul>
+
+    <h2>端末外へ送信される情報</h2>
+    <p>Google Analytics for FirebaseおよびGoogle Mobile Adsは、サービス提供・測定・改善・不正防止のため、次の情報を収集する場合があります。</p>
+    <ul>
+      <li>アプリインスタンスID、アプリまたは開発者単位の端末識別子。ATTを許可した場合は広告ID（IDFA）を含む場合があります。</li>
+      <li>画面表示、アプリ起動、固定名のアプリ内イベント、広告の表示・視聴情報。</li>
+      <li>端末種別、OS、言語、タイムゾーン、アプリ・SDKバージョン。</li>
+      <li>IPアドレスから推定される国・地域レベルの概算位置情報。</li>
+      <li>SDKのクラッシュ、起動時間、ハング率、性能等の診断情報。</li>
+    </ul>
+    <p>本アプリが独自に送信するAnalytics情報は、固定された画面名・画面クラスと、オンボーディング完了、日々の変化の表示、復帰時の追いつき表示、島の保存、配置編集、素材、ガイド、リワード広告、広告プライバシー設定に関する固定名イベントです。画面表示以外の独自イベントにパラメータは付けません。歩数、距離、睡眠、HealthKitの許可結果、天気、島の内容・数値、日付、UUID、自由入力、開発者定義のユーザーIDは送信しません。</p>
+
+    <h2>Analyticsと広告の選択</h2>
+    <ul>
+      <li>Firebase Analyticsは初期状態で有効です。設定の「使用状況データを共有」をオフにすると、それ以降のAnalytics収集を停止できます。</li>
+      <li>広告は、利用者が自分で選んだ場合だけ準備・表示するリワード広告に限定します。</li>
+      <li>Google User Messaging Platform（UMP）が広告リクエストを許可するまで、Google Mobile Adsを開始せず、広告をリクエストしません。</li>
+      <li>ATTを許可した場合、Google Mobile AdsはIDFAを他社のアプリやWebサイトをまたぐ広告のパーソナライズと測定に使用する場合があります。</li>
+      <li>ATTを拒否・制限した場合はIDFAを使用せず、非パーソナライズ広告（<code>npa=1</code>）を要求します。拒否してもアプリとリワード広告を利用できます。</li>
+    </ul>
+
+    <h2>第三者サービス</h2>
+    <p>本アプリはGoogle LLCのGoogle Analytics for Firebase、Google Mobile Ads / AdMob、Google User Messaging Platformを利用します。Googleによるデータの取扱いは、<a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Googleプライバシーポリシー</a>と各サービスの規約にも従います。</p>
+
+    <h2>保存期間と削除</h2>
+    <p>設定の「ローカルデータを削除」は、端末内の島、日々の変化、素材、設定を削除します。HealthKit内のデータや、Googleへ送信済みのAnalytics・広告データは削除しません。アプリを削除すると、本アプリのローカルデータは削除されます。Googleへ送信されたデータの保持・削除は、提供者が設定する保持期間、Googleのサービス設定・規約、適用法令に従います。</p>
+
+    <h2>お問い合わせ</h2>
+    <p><a href="https://sakurai-yoshi.github.io/">サポート窓口</a><br>メール: <a href="mailto:vice0804@gmail.com">vice0804@gmail.com</a></p>
+
+    <section class="language" lang="en">
+      <p><a href="../privacy.html">Back to the privacy policy index</a></p>
+      <h1>Life Terrarium Privacy Policy</h1>
+      <p class="meta">Provider: Yoshiaki Sakurai<br>Effective date: July 22, 2026 / Last updated: August 25, 2026</p>
+      <p>Life Terrarium is an iOS app that turns daily health data authorized by the user into changes in a small on-device island. No account is required.</p>
+
+      <h2>Information used on the device</h2>
+      <ul>
+        <li>The App reads steps, walking/running distance, and sleep duration from Apple HealthKit on a read-only basis. It does not write to HealthKit.</li>
+        <li>HealthKit data and authorization state, island state and history, materials, settings, and notification settings are processed and stored on the device.</li>
+        <li>HealthKit data and island information derived from it are not transmitted off the device for advertising, marketing, Analytics, or data mining.</li>
+      </ul>
+
+      <h2>Information transmitted off the device</h2>
+      <p>Google Analytics for Firebase and Google Mobile Ads may collect the following information to provide, measure, improve, and protect their services.</p>
+      <ul>
+        <li>App instance ID and app- or developer-bounded device identifiers. If ATT is allowed, this may include the advertising identifier (IDFA).</li>
+        <li>Screen views, app launches, fixed-name in-app events, and ad impression or viewing data.</li>
+        <li>Device type, OS, language, time zone, and app or SDK version.</li>
+        <li>Country- or region-level coarse location inferred from IP address.</li>
+        <li>SDK crash, launch-time, hang-rate, performance, and other diagnostic information.</li>
+      </ul>
+      <p>The App's developer-defined Analytics information consists of fixed screen names and classes, plus fixed-name events for onboarding completion, daily-change and return catch-up presentation, island archiving, placement editing, materials, feature guides, rewarded ads, and ad privacy choices. Developer-defined events other than screen views have no parameters. The App does not send steps, distance, sleep, HealthKit authorization results, weather, island content or values, dates, UUIDs, free-form content, or a developer-defined user ID.</p>
+
+      <h2>Analytics and advertising choices</h2>
+      <ul>
+        <li>Firebase Analytics is enabled by default. Turning off <strong>Share usage data</strong> in Settings stops future Analytics collection.</li>
+        <li>Ads are limited to rewarded ads prepared and shown only after the user chooses them.</li>
+        <li>Google Mobile Ads is not started and no ad is requested until Google User Messaging Platform (UMP) reports that ads may be requested.</li>
+        <li>If ATT is allowed, Google Mobile Ads may use IDFA to personalize and measure ads across other companies' apps and websites.</li>
+        <li>If ATT is denied or restricted, the App does not use IDFA and requests non-personalized ads (<code>npa=1</code>). Declining does not block the App or rewarded ads.</li>
+      </ul>
+
+      <h2>Third-party services</h2>
+      <p>The App uses Google Analytics for Firebase, Google Mobile Ads / AdMob, and Google User Messaging Platform provided by Google LLC. Google's processing is also governed by the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a> and applicable service terms.</p>
+
+      <h2>Retention and deletion</h2>
+      <p><strong>Delete local data</strong> removes the island, daily changes, materials, and settings stored on the device. It does not delete HealthKit data or Analytics and advertising data already transmitted to Google. Deleting the App removes its local data. Data transmitted to Google is retained and deleted according to the provider-selected retention period, Google service settings and terms, and applicable law.</p>
+
+      <h2>Contact</h2>
+      <p><a href="https://sakurai-yoshi.github.io/">Support</a><br>Email: <a href="mailto:vice0804@gmail.com">vice0804@gmail.com</a></p>
+    </section>
+  </main>
+</body>
+</html>
