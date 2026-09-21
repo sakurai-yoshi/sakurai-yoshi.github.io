@@ -32,7 +32,7 @@
 <p>本アプリは、ユーザーの許可を得た場合に、HealthKitから「歩行＋ランニング距離」を読み取ります。読み取った距離は、選択した日本の道路ルート上の仮想進捗、履歴、ダッシュボードを表示するために使用します。</p>
 <p>本アプリはHealthKitへデータを書き込みません。健康データと健康データから算出した距離は端末内のSwiftDataに保存し、広告、アクセス解析、Firebaseその他の外部サーバーへ送信しません。また、広告やマーケティングの対象選定には使用しません。</p>
 <h2>3. 端末内に保存する情報</h2>
-<p>出発地・目的地、ルート、仮想現在地の進捗、日別距離、収集した土地のプレート、Wikipediaの要約・画像URL・ページURL、短い生成キャプションや保存を確定した絵葉書を端末内に保存します。アプリを削除すると、通常これらのアプリ内データも削除されます。</p>
+<p>出発地・目的地、ルート、仮想現在地の進捗、日別距離、収集した土地のプレート、Wikipediaの要約・画像URL・ページURL、短い生成キャプション、旧バージョンで保存済みの生成解説、保存を確定した絵葉書を端末内に保存します。アプリを削除すると、通常これらのアプリ内データも削除されます。</p>
 <p>HealthKit内の歩行＋ランニング距離そのものは本アプリの削除対象ではありません。ただし、現行版がアプリ内へ再取得する期間は通常同期時で最大400日、再インストール直後は約7日です。ルート履歴、仮想進捗、収集プレート、生成コンテンツはHealthKitから復元できません。</p>
 <h2>4. 外部サービスと通信</h2>
 <ul>
@@ -73,7 +73,7 @@
 <p>With your permission, the App reads Walking + Running Distance from HealthKit. It uses this distance to show virtual progress along a route you selected in Japan, journey history, and dashboard information.</p>
 <p>The App does not write HealthKit data. Health distance and distance derived from it are stored in the App’s on-device SwiftData store. They are not sent to advertising, analytics, Firebase, or another external server, and are not used for advertising or marketing targeting.</p>
 <h2>3. Information Stored on Device</h2>
-<p>The App stores your chosen start and destination, route, virtual progress, daily distance, collected place plates, Wikipedia summaries and links, short generated captions, and postcards you choose to save, on device. This app data is normally removed when you delete the App.</p>
+<p>The App stores your chosen start and destination, route, virtual progress, daily distance, collected place plates, Wikipedia summaries and links, short generated captions, explanatory text saved by earlier versions, and postcards you choose to save, on device. This app data is normally removed when you delete the App.</p>
 <p>Deleting the App does not delete Walking + Running Distance held by HealthKit. However, the current version reimports at most 400 days during normal synchronization and about seven days immediately after reinstalling. Route history, virtual progress, collected plates, and generated content cannot be reconstructed from HealthKit.</p>
 <h2>4. External Services</h2>
 <ul>
