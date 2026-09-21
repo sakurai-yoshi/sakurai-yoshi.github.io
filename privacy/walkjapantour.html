@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="WalkJapanTourのプライバシーポリシー">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src 'self'; base-uri 'none'; form-action 'none'">
+  <title>WalkJapanTour — プライバシーポリシー</title>
+  <style>
+    :root { color-scheme: light dark; --bg: #f7faf7; --card: #fff; --fg: #18251f; --muted: #53635b; --border: #d9e2dc; --link: #276b50; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.75 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    main { width: min(800px, calc(100% - 2rem)); margin: 2rem auto; padding: clamp(1.25rem, 4vw, 3rem); background: var(--card); border: 1px solid var(--border); border-radius: 1rem; }
+    h1, h2, h3 { line-height: 1.35; }
+    h2 { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+    h3 { margin-top: 1.4rem; }
+    a { color: var(--link); }
+    .meta, .note { color: var(--muted); }
+    .language { margin-top: 4rem; padding-top: 2rem; border-top: 2px solid var(--border); }
+    @media (prefers-color-scheme: dark) { :root { --bg: #0b100d; --card: #171d19; --fg: #f1f6f2; --muted: #a8b5ac; --border: #364139; --link: #7dd3a8; } }
+  </style>
+</head>
+<body>
+<main>
+<p><a href="../privacy.html">プライバシーポリシー一覧へ戻る</a> · <a href="#english" lang="en">English</a></p>
+<h1>WalkJapanTour プライバシーポリシー</h1>
+<p>最終更新日: 2026年9月21日</p>
+<h2>1. 対象</h2>
+<p>本ポリシーは、WalkJapanTour（以下「本アプリ」）における情報の取扱いを説明します。</p>
+<h2>2. Appleヘルスケアのデータ</h2>
+<p>本アプリは、ユーザーの許可を得た場合に、HealthKitから「歩行＋ランニング距離」を読み取ります。読み取った距離は、選択した日本の道路ルート上の仮想進捗、履歴、ダッシュボードを表示するために使用します。</p>
+<p>本アプリはHealthKitへデータを書き込みません。健康データと健康データから算出した距離は端末内のSwiftDataに保存し、広告、アクセス解析、Firebaseその他の外部サーバーへ送信しません。また、広告やマーケティングの対象選定には使用しません。</p>
+<h2>3. 端末内に保存する情報</h2>
+<p>出発地・目的地、ルート、仮想現在地の進捗、日別距離、収集した土地のプレート、Wikipediaの要約・画像URL・ページURL、生成した解説や保存を確定した絵葉書を端末内に保存します。アプリを削除すると、通常これらのアプリ内データも削除されます。</p>
+<p>HealthKit内の歩行＋ランニング距離そのものは本アプリの削除対象ではありません。ただし、現行版がアプリ内へ再取得する期間は通常同期時で最大400日、再インストール直後は約7日です。ルート履歴、仮想進捗、収集プレート、生成コンテンツはHealthKitから復元できません。</p>
+<h2>4. 外部サービスと通信</h2>
+<ul>
+<li>Apple MapKit: 地点検索、経路、地図、ジオコード、Look Aroundの提供。</li>
+<li>Wikipedia: 土地の参考情報、サムネイル、ページURLの取得。</li>
+<li>Apple Image Playground / Private Cloud Compute（PCC）: ユーザーが開始した絵葉書の画像生成。入力と保存については第5項を参照してください。</li>
+<li>Firebase Analytics: 画面閲覧、操作、広告イベント、アプリインスタンス識別子、端末・OS等の利用状況分析。健康距離は送信しません。仮想旅行上の市区町村・都道府県、開いたWikipedia URL等がイベントパラメータに含まれる場合があります。</li>
+<li>Firebase App Check: アプリからのリクエストの正当性確認に必要な端末・アプリ情報。</li>
+<li>Google Mobile Ads / User Messaging Platform: rewarded adの配信、同意管理、不正防止、広告効果測定。IPアドレスから推定されるおおよその位置、端末識別子、広告データ、アプリ操作、診断情報等を処理する場合があります。</li>
+</ul>
+<p>Googleの同意画面や端末設定により、パーソナライズ広告の可否が変わります。アプリ内の設定から利用可能な場合にプライバシー選択肢を再表示できます。</p>
+<h2>5. Apple IntelligenceとImage Playground</h2>
+<p>対応端末・設定では、AppleのFoundation Modelsを使用して土地の解説・キャプション・質問への回答・自然言語検索・週次まとめを端末内で処理します。質問履歴は画面内だけに保持します。</p>
+<p>絵葉書は、獲得済みの土地からユーザーがApple標準のImage Playground画面を開いて作成します。画像生成には通信が必要で、AppleのPrivate Cloud Compute（PCC）で処理されます。対応端末・言語・地域・設定、各ユーザーの利用枠・制限はAppleが管理します。本アプリは独自の生成残回数を設けず、作成・作り直し・再試行に追加の広告視聴を求めません。</p>
+<p>本アプリが生成画面に渡すのは、公開地名、ランドマーク、地方の景観情報、保存済みWikipediaの概要です。健康データ・歩行距離・ルート座標・質問履歴は渡さず、座標を含むフォールバック地名も除外します。本アプリから開く生成画面では人物のパーソナライズと外部プロバイダーを無効にします。Appleの画面でユーザー自身が入力する内容はAppleのサービス上で扱われます。</p>
+<p>ユーザーが確定した画像は端末内に保存します。1つの土地に1枚保存し、作り直しの画像を保存するまでは元の絵葉書を保持します。キャンセルや生成失敗で獲得済みのプレートが失われることはありません。共有を選ぶと、画像・地名・獲得日・「AIイラスト」の表記を含むPNGを端末内で作成し、ユーザーが標準共有画面で選んだ共有先へ渡します。</p>
+<p>生成結果は誤りを含む場合があります。絵葉書は写真と区別して「AIイラスト」と表示し、土地の解説は出典と照合してください。Apple側のサービスの取扱いは<a href="https://www.apple.com/privacy/features/">AppleのPCC説明</a>と<a href="https://support.apple.com/ja-jp/127901">Apple Intelligenceの使用制限</a>を参照してください。</p>
+<h2>6. トラッキングと広告識別子</h2>
+<p>本アプリはGoogle Mobile Ads SDKを含みます。利用地域、同意状況、端末設定、運営者の広告設定に応じて、広告目的の識別子や利用状況がGoogleまたは広告パートナーにより処理される場合があります。本アプリはHealthKitデータをトラッキングへ使用しません。</p>
+<h2>7. 保持・削除</h2>
+<p>端末内データはユーザーがアプリを削除するまで保持されます。Firebase AnalyticsおよびGoogle広告関連データの保持は各サービスの設定・ポリシーに従います。問い合わせによる削除依頼の対象と手順は、運営者が管理可能なデータ範囲に応じて案内します。</p>
+<h2>8. 子どもの利用</h2>
+<p>本アプリは子どもを主な対象として設計していません。年齢制限はApp Store Connectの質問票に基づき設定します。</p>
+<h2>9. 変更</h2>
+<p>機能、SDK、法令または運用の変更に応じて本ポリシーを更新します。重要な変更はアプリ内または公開ページで案内します。</p>
+<h2>10. お問い合わせ</h2>
+<ul>
+<li>運営者: Yoshiaki Sakurai</li>
+<li>Email: vice0804@gmail.com</li>
+<li>Form: https://forms.gle/RQD5RKykttG9AReY9</li>
+</ul>
+<section id="english" class="language" lang="en">
+<h1>WalkJapanTour Privacy Policy</h1>
+<p>Last updated: September 21, 2026</p>
+<h2>1. Scope</h2>
+<p>This policy describes how WalkJapanTour (the “App”) handles information.</p>
+<h2>2. Apple Health Data</h2>
+<p>With your permission, the App reads Walking + Running Distance from HealthKit. It uses this distance to show virtual progress along a route you selected in Japan, journey history, and dashboard information.</p>
+<p>The App does not write HealthKit data. Health distance and distance derived from it are stored in the App’s on-device SwiftData store. They are not sent to advertising, analytics, Firebase, or another external server, and are not used for advertising or marketing targeting.</p>
+<h2>3. Information Stored on Device</h2>
+<p>The App stores your chosen start and destination, route, virtual progress, daily distance, collected place plates, Wikipedia summaries and links, and generated explanations and postcards you choose to save, on device. This app data is normally removed when you delete the App.</p>
+<p>Deleting the App does not delete Walking + Running Distance held by HealthKit. However, the current version reimports at most 400 days during normal synchronization and about seven days immediately after reinstalling. Route history, virtual progress, collected plates, and generated content cannot be reconstructed from HealthKit.</p>
+<h2>4. External Services</h2>
+<ul>
+<li>Apple MapKit provides place search, routes, maps, geocoding, and Look Around.</li>
+<li>Wikipedia provides local reference summaries, thumbnails, and page links.</li>
+<li>Apple Image Playground / Private Cloud Compute (PCC) generates postcard images when you start creation. Section 5 explains the inputs and local storage.</li>
+<li>Firebase Analytics processes screen views, interactions, ad events, app-instance identifiers, and device/app information. Health distance is not sent. Virtual journey city/prefecture names and opened Wikipedia URLs may be included as event parameters.</li>
+<li>Firebase App Check processes app and device signals used to validate requests.</li>
+<li>Google Mobile Ads and User Messaging Platform provide rewarded ads, consent management, fraud prevention, and measurement. They may process coarse location inferred from IP address, device identifiers, advertising data, product interaction, and diagnostics.</li>
+</ul>
+<p>Where available, you can revisit privacy choices through the App’s settings. Ad personalization varies by region, consent, device settings, and the operator’s advertising configuration.</p>
+<h2>5. Apple Intelligence and Image Playground</h2>
+<p>On supported devices and configurations, the App uses Apple’s Foundation Models on device for place explanations, captions, answers to questions, natural-language collection search, and weekly recaps. Question history is held only in the current screen.</p>
+<p>To create a postcard, you open Apple’s standard Image Playground interface from a place you have already collected. Image generation requires network access and runs on Apple’s Private Cloud Compute (PCC). Apple manages supported devices, languages, regions, settings, and usage limits for each user. The App does not set its own generation quota or require another ad to create, remake, or retry a postcard.</p>
+<p>The App provides public place names, landmarks, regional landscape information, and saved Wikipedia summaries to the generation interface. It does not provide health data, walking distance, route coordinates, or question history, and excludes fallback place names containing coordinates. The App disables people personalization and external providers in the generation interface it opens. Content that you enter directly in Apple’s interface is handled by Apple’s service.</p>
+<p>Images you confirm are saved on device, with one postcard per collected place. The existing postcard remains until its replacement is saved successfully. Canceling or failing to generate an image does not remove the collected plate. If you choose to share, the App locally creates a PNG containing the image, place name, collection date, and an AI-illustration label, then passes it to the destination you select in the system share sheet.</p>
+<p>Generated content may contain errors. Postcards are labeled as AI illustrations to distinguish them from photos; check place explanations against their sources. See <a href="https://www.apple.com/privacy/features/">Apple’s PCC information</a> and <a href="https://support.apple.com/en-us/127901">Apple Intelligence usage limits</a> for Apple’s service information.</p>
+<h2>6. Tracking and Advertising Identifiers</h2>
+<p>The App includes Google Mobile Ads. Depending on your region, consent, device settings, and the operator’s ad configuration, Google or advertising partners may process identifiers and usage data for advertising. HealthKit data is never used for tracking.</p>
+<h2>7. Retention and Deletion</h2>
+<p>On-device data remains until you delete the App. Firebase Analytics and Google advertising data follow the retention settings and policies of those services. The operator will explain deletion options for data it controls when responding to a request.</p>
+<h2>8. Children</h2>
+<p>The App is not designed primarily for children. Its App Store age rating is determined through Apple’s age-rating questionnaire.</p>
+<h2>9. Changes</h2>
+<p>This policy may be updated when features, SDKs, law, or operating practices change. Material changes will be communicated in the App or on the published page.</p>
+<h2>10. Contact</h2>
+<ul>
+<li>Operator: Yoshiaki Sakurai</li>
+<li>Email: vice0804@gmail.com</li>
+<li>Form: https://forms.gle/RQD5RKykttG9AReY9</li>
+</ul>
+</section>
+</main>
+</body>
+</html>
