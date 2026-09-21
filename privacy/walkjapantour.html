@@ -32,7 +32,7 @@
 <p>本アプリは、ユーザーの許可を得た場合に、HealthKitから「歩行＋ランニング距離」を読み取ります。読み取った距離は、選択した日本の道路ルート上の仮想進捗、履歴、ダッシュボードを表示するために使用します。</p>
 <p>本アプリはHealthKitへデータを書き込みません。健康データと健康データから算出した距離は端末内のSwiftDataに保存し、広告、アクセス解析、Firebaseその他の外部サーバーへ送信しません。また、広告やマーケティングの対象選定には使用しません。</p>
 <h2>3. 端末内に保存する情報</h2>
-<p>出発地・目的地、ルート、仮想現在地の進捗、日別距離、収集した土地のプレート、Wikipediaの要約・画像URL・ページURL、生成した解説や保存を確定した絵葉書を端末内に保存します。アプリを削除すると、通常これらのアプリ内データも削除されます。</p>
+<p>出発地・目的地、ルート、仮想現在地の進捗、日別距離、収集した土地のプレート、Wikipediaの要約・画像URL・ページURL、短い生成キャプションや保存を確定した絵葉書を端末内に保存します。アプリを削除すると、通常これらのアプリ内データも削除されます。</p>
 <p>HealthKit内の歩行＋ランニング距離そのものは本アプリの削除対象ではありません。ただし、現行版がアプリ内へ再取得する期間は通常同期時で最大400日、再インストール直後は約7日です。ルート履歴、仮想進捗、収集プレート、生成コンテンツはHealthKitから復元できません。</p>
 <h2>4. 外部サービスと通信</h2>
 <ul>
@@ -45,9 +45,9 @@
 </ul>
 <p>Googleの同意画面や端末設定により、パーソナライズ広告の可否が変わります。アプリ内の設定から利用可能な場合にプライバシー選択肢を再表示できます。</p>
 <h2>5. Apple IntelligenceとImage Playground</h2>
-<p>対応端末・設定では、AppleのFoundation Modelsを使用して土地の解説・キャプション・質問への回答・自然言語検索・週次まとめを端末内で処理します。質問履歴は画面内だけに保持します。</p>
+<p>対応端末・設定では、AppleのFoundation Modelsを使用して短いキャプション・質問への回答・自然言語検索・週次まとめを端末内で処理します。「この土地の特徴」は生成せず、保存済みWikipediaの出典付き抜粋を表示します。質問履歴は画面内だけに保持します。</p>
 <p>絵葉書は、獲得済みの土地からユーザーがApple標準のImage Playground画面を開いて作成します。画像生成には通信が必要で、AppleのPrivate Cloud Compute（PCC）で処理されます。対応端末・言語・地域・設定、各ユーザーの利用枠・制限はAppleが管理します。本アプリは独自の生成残回数を設けず、作成・作り直し・再試行に追加の広告視聴を求めません。</p>
-<p>本アプリが生成画面に渡すのは、公開地名、ランドマーク、地方の景観情報、保存済みWikipediaの概要です。健康データ・歩行距離・ルート座標・質問履歴は渡さず、座標を含むフォールバック地名も除外します。本アプリから開く生成画面では人物のパーソナライズと外部プロバイダーを無効にします。Appleの画面でユーザー自身が入力する内容はAppleのサービス上で扱われます。</p>
+<p>本アプリが生成画面に渡すのは、公開地名、住所を除いたランドマーク、MapKitで取得した近隣の見どころ、保存済みWikipedia概要から選んだ景観情報、およびWikimedia Commons上でパブリックドメインまたはCC0と確認できたWikipedia写真（取得できる場合）です。健康データ・歩行距離・ルート座標・質問履歴は渡さず、住所と座標を含むフォールバック地名も除外します。本アプリから開く生成画面では人物のパーソナライズと外部プロバイダーを無効にします。Appleの画面でユーザー自身が入力する内容はAppleのサービス上で扱われます。</p>
 <p>ユーザーが確定した画像は端末内に保存します。1つの土地に1枚保存し、作り直しの画像を保存するまでは元の絵葉書を保持します。キャンセルや生成失敗で獲得済みのプレートが失われることはありません。共有を選ぶと、画像・地名・獲得日・「AIイラスト」の表記を含むPNGを端末内で作成し、ユーザーが標準共有画面で選んだ共有先へ渡します。</p>
 <p>生成結果は誤りを含む場合があります。絵葉書は写真と区別して「AIイラスト」と表示し、土地の解説は出典と照合してください。Apple側のサービスの取扱いは<a href="https://www.apple.com/privacy/features/">AppleのPCC説明</a>と<a href="https://support.apple.com/ja-jp/127901">Apple Intelligenceの使用制限</a>を参照してください。</p>
 <h2>6. トラッキングと広告識別子</h2>
@@ -73,7 +73,7 @@
 <p>With your permission, the App reads Walking + Running Distance from HealthKit. It uses this distance to show virtual progress along a route you selected in Japan, journey history, and dashboard information.</p>
 <p>The App does not write HealthKit data. Health distance and distance derived from it are stored in the App’s on-device SwiftData store. They are not sent to advertising, analytics, Firebase, or another external server, and are not used for advertising or marketing targeting.</p>
 <h2>3. Information Stored on Device</h2>
-<p>The App stores your chosen start and destination, route, virtual progress, daily distance, collected place plates, Wikipedia summaries and links, and generated explanations and postcards you choose to save, on device. This app data is normally removed when you delete the App.</p>
+<p>The App stores your chosen start and destination, route, virtual progress, daily distance, collected place plates, Wikipedia summaries and links, short generated captions, and postcards you choose to save, on device. This app data is normally removed when you delete the App.</p>
 <p>Deleting the App does not delete Walking + Running Distance held by HealthKit. However, the current version reimports at most 400 days during normal synchronization and about seven days immediately after reinstalling. Route history, virtual progress, collected plates, and generated content cannot be reconstructed from HealthKit.</p>
 <h2>4. External Services</h2>
 <ul>
@@ -86,11 +86,11 @@
 </ul>
 <p>Where available, you can revisit privacy choices through the App’s settings. Ad personalization varies by region, consent, device settings, and the operator’s advertising configuration.</p>
 <h2>5. Apple Intelligence and Image Playground</h2>
-<p>On supported devices and configurations, the App uses Apple’s Foundation Models on device for place explanations, captions, answers to questions, natural-language collection search, and weekly recaps. Question history is held only in the current screen.</p>
+<p>On supported devices and configurations, the App uses Apple’s Foundation Models on device for short captions, answers to questions, natural-language collection search, and weekly recaps. The “place features” section is a sourced excerpt from the saved Wikipedia summary, rather than generated prose. Question history is held only in the current screen.</p>
 <p>To create a postcard, you open Apple’s standard Image Playground interface from a place you have already collected. Image generation requires network access and runs on Apple’s Private Cloud Compute (PCC). Apple manages supported devices, languages, regions, settings, and usage limits for each user. The App does not set its own generation quota or require another ad to create, remake, or retry a postcard.</p>
-<p>The App provides public place names, landmarks, regional landscape information, and saved Wikipedia summaries to the generation interface. It does not provide health data, walking distance, route coordinates, or question history, and excludes fallback place names containing coordinates. The App disables people personalization and external providers in the generation interface it opens. Content that you enter directly in Apple’s interface is handled by Apple’s service.</p>
+<p>The App provides public place names, non-address landmarks, nearby public MapKit points of interest, selected visible landscape facts from saved Wikipedia summaries, and an optional Wikipedia photo only when Wikimedia Commons metadata identifies it as Public Domain or CC0. It does not provide health data, walking distance, route coordinates, or question history, and excludes addresses and fallback place names containing coordinates. The App disables people personalization and external providers in the generation interface it opens. Content that you enter directly in Apple’s interface is handled by Apple’s service.</p>
 <p>Images you confirm are saved on device, with one postcard per collected place. The existing postcard remains until its replacement is saved successfully. Canceling or failing to generate an image does not remove the collected plate. If you choose to share, the App locally creates a PNG containing the image, place name, collection date, and an AI-illustration label, then passes it to the destination you select in the system share sheet.</p>
-<p>Generated content may contain errors. Postcards are labeled as AI illustrations to distinguish them from photos; check place explanations against their sources. See <a href="https://www.apple.com/privacy/features/">Apple’s PCC information</a> and <a href="https://support.apple.com/en-us/127901">Apple Intelligence usage limits</a> for Apple’s service information.</p>
+<p>Generated content may contain errors. Postcards are labeled as AI illustrations to distinguish them from photos; sourced place excerpts link back to Wikipedia. See <a href="https://www.apple.com/privacy/features/">Apple’s PCC information</a> and <a href="https://support.apple.com/en-us/127901">Apple Intelligence usage limits</a> for Apple’s service information.</p>
 <h2>6. Tracking and Advertising Identifiers</h2>
 <p>The App includes Google Mobile Ads. Depending on your region, consent, device settings, and the operator’s ad configuration, Google or advertising partners may process identifiers and usage data for advertising. HealthKit data is never used for tracking.</p>
 <h2>7. Retention and Deletion</h2>
